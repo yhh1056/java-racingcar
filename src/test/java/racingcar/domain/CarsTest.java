@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
 
-    final int advanceValue = 5;
-    final int stopValue = 3;
+    private static final int ADVANCE_VALUE = 5;
+    private static final int STOP_VALUE = 3;
 
     @Test
     @DisplayName("자동차의 이름으로 자동차 리스트를 생성한다")
@@ -32,7 +32,7 @@ public class CarsTest {
     void existsWinner() {
         // given
         Cars cars = new Cars(givenCarsNames("hoho", "rich", "pobi"));
-        Queue<MovingNumber> movingNumbers = givenNumbers(advanceValue, stopValue, stopValue);
+        Queue<MovingNumber> movingNumbers = givenNumbers(ADVANCE_VALUE, STOP_VALUE, STOP_VALUE);
 
         // when
         cars.move(movingNumbers);
@@ -47,7 +47,7 @@ public class CarsTest {
     void existsWinners() {
         // given
         Cars cars = new Cars(givenCarsNames("hoho", "rich", "pobi"));
-        Queue<MovingNumber> movingNumbers = givenNumbers(advanceValue, advanceValue, stopValue);
+        Queue<MovingNumber> movingNumbers = givenNumbers(ADVANCE_VALUE, ADVANCE_VALUE, STOP_VALUE);
 
         // when
         cars.move(movingNumbers);
@@ -62,7 +62,7 @@ public class CarsTest {
     void throwExceptionWhenCarsSizeNotEqualsNumbersSize() {
         // given
         Cars cars = new Cars(givenCarsNames("hoho", "rich", "pobi"));
-        Queue<MovingNumber> movingNumbers = givenNumbers(advanceValue);
+        Queue<MovingNumber> movingNumbers = givenNumbers(ADVANCE_VALUE);
 
         // when & then
         assertThatIllegalArgumentException()
